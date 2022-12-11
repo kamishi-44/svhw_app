@@ -8,8 +8,10 @@ class Progress {
 
   /// 宿題ID
   int homeworkId;
+
   /// 宿題の総数
   int total;
+
   /// 現在完了した数
   int done;
 
