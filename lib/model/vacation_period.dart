@@ -1,15 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:objectbox/objectbox.dart';
 
 /// 夏休みの期間のモデルです。
 @Entity()
+@immutable
 class VacationPeriod {
   /// ID
-  int id;
+  final int id;
 
   /// 夏休みの開始日
-  DateTime startDate;
+  final DateTime startDate;
   /// 夏休みの終了日
-  DateTime endDate;
+  final DateTime endDate;
 
-  VacationPeriod({this.id = 0, required this.startDate, required this.endDate});
+  const VacationPeriod({this.id = 0, required this.startDate, required this.endDate});
+
+  VacationPeriod copyWith({DateTime? startDate, DateTime? endDate}) {
+    return VacationPeriod(
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate);
+  }
 }
