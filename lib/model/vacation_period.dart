@@ -13,8 +13,10 @@ class VacationPeriod {
   /// 夏休みの終了日
   final DateTime endDate;
 
+  /// コンストラクタ
   const VacationPeriod({this.id = 0, required this.startDate, required this.endDate});
 
+  /// オブジェクトのコピーを行います。
   VacationPeriod copyWith({DateTime? startDate, DateTime? endDate}) {
     return VacationPeriod(
         startDate: startDate ?? this.startDate,
