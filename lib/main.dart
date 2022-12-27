@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:svhw_app/constant/colors.dart';
+import 'package:svhw_app/view/vacation_period_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,47 +12,61 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Summer Homework',
       theme: ThemeData(
         primarySwatch: AppColor.mainColor,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'SVHW Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final int _counter = 0;
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          children: testPageTransitionButtons(context),
         ),
       ),
     );
+  }
+
+  /// 画面実装時の各画面確認用の遷移ボタンを取得します。
+  /// 各画面の実装や遷移、制御が実装出来次第削除します。
+  List<Widget> testPageTransitionButtons(BuildContext context) {
+    return <Widget>[
+      OutlinedButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) =>
+                const VacationPeriodPage()));
+          },
+          child: const Text('夏休みの期間登録画面')),
+      OutlinedButton(
+          onPressed: () {
+            null;
+          },
+          child: const Text('宿題内容登録画面')),
+      OutlinedButton(
+          onPressed: () {
+            null;
+          },
+          child: const Text('宿題の進捗登録画面')),
+      OutlinedButton(
+          onPressed: () {
+            null;
+          },
+          child: const Text('宿題の進捗確認画面')),
+    ];
   }
 }
