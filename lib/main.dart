@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:svhw_app/constant/colors.dart';
+import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/view/vacation_period_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: AppColor.mainColor,
       ),
       home: const MyHomePage(title: 'SVHW Home Page'),
+      localizationsDelegates: Constant.localizationsDelegates,
+      supportedLocales: Constant.supportedLocales,
     );
   }
 }

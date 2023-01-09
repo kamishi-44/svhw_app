@@ -14,27 +14,35 @@ class VacationPeriodPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('夏休みの期間登録画面'),
       ),
-      body: Column(
-        children: [
-          const Text(Constant.vacationStartDateMessage),
-          TextField(
-            focusNode: AlwaysDisabledFocusNode(),
-            style: const TextStyle(
-              fontSize: 20.0,
-              height: 1.0,
-              color: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Constant.vacationPeriodPageVerticalPadding, vertical: 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(Constant.vacationStartDateMessage),
+            TextField(
+              focusNode: AlwaysDisabledFocusNode(),
+              style: const TextStyle(
+                fontSize: 20.0,
+                height: 1.0,
+                color: Colors.black,
+              ),
             ),
-          ),
-          const Text(Constant.vacationEndDateMessage),
-          TextField(
-            focusNode: AlwaysDisabledFocusNode(),
-            style: const TextStyle(
-              fontSize: 20.0,
-              height: 1.0,
-              color: Colors.black,
+            const SizedBox(
+              height: 100,
             ),
-          ),
-        ],
+            const Text(Constant.vacationEndDateMessage),
+            TextField(
+              focusNode: AlwaysDisabledFocusNode(),
+              style: const TextStyle(
+                fontSize: 20.0,
+                height: 1.0,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
