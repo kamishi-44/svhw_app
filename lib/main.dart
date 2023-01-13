@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/colors.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/view/vacation_period_page.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -52,8 +54,7 @@ class MyHomePage extends StatelessWidget {
       OutlinedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) =>
-                const VacationPeriodPage()));
+                builder: (BuildContext context) => VacationPeriodPage()));
           },
           child: const Text('夏休みの期間登録画面')),
       OutlinedButton(

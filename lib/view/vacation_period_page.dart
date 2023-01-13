@@ -6,7 +6,20 @@ import 'package:svhw_app/constant/constant.dart';
 /// 夏休み情報が登録されていない場合のみ表示されます。
 class VacationPeriodPage extends ConsumerWidget {
   /// コンストラクタ
-  const VacationPeriodPage({super.key});
+  VacationPeriodPage({super.key});
+
+  final TextEditingController _startDateController = TextEditingController();
+
+  final TextEditingController _endDateController = TextEditingController();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2021),
+      lastDate: DateTime(2022),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +35,9 @@ class VacationPeriodPage extends ConsumerWidget {
           children: [
             const Text(Constant.vacationStartDateMessage),
             TextField(
+              controller: _startDateController,
               focusNode: AlwaysDisabledFocusNode(),
+              onTap: () => _selectDate(context),
               style: const TextStyle(
                 fontSize: 20.0,
                 height: 1.0,
@@ -34,6 +49,7 @@ class VacationPeriodPage extends ConsumerWidget {
             ),
             const Text(Constant.vacationEndDateMessage),
             TextField(
+              controller: _endDateController,
               focusNode: AlwaysDisabledFocusNode(),
               style: const TextStyle(
                 fontSize: 20.0,

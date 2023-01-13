@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/model/vacation_period.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
@@ -10,4 +11,14 @@ class AppProvider {
   static final StateNotifierProvider periodProvider =
       StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>(
           (_) => VacationPeriodNotifier());
+
+  static final AutoDisposeStateProvider<TextEditingController>
+      startDateControllerStateProvider = StateProvider.autoDispose((ref) {
+    return TextEditingController(text: '');
+  });
+
+  static final AutoDisposeStateProvider<TextEditingController>
+  endDateControllerStateProvider = StateProvider.autoDispose((ref) {
+    return TextEditingController(text: '');
+  });
 }
