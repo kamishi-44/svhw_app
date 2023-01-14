@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/constant.dart';
+import 'package:svhw_app/provider/provider.dart';
 
 /// 夏休みの期間を登録するページです。
 /// 夏休み情報が登録されていない場合のみ表示されます。
 class VacationPeriodPage extends ConsumerWidget {
   /// コンストラクタ
-  VacationPeriodPage({super.key});
+  const VacationPeriodPage({super.key});
 
-  final TextEditingController _startDateController = TextEditingController();
-
-  final TextEditingController _endDateController = TextEditingController();
-
-  Future<void> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context, WidgetRef ref) async {
     final DateTime? selected = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -35,9 +32,10 @@ class VacationPeriodPage extends ConsumerWidget {
           children: [
             const Text(Constant.vacationStartDateMessage),
             TextField(
-              controller: _startDateController,
+              controller: ref.watch(AppProvider.startDateControllerStateProvider),
+              // タップ時にキーワードを表示しないよう制御
               focusNode: AlwaysDisabledFocusNode(),
-              onTap: () => _selectDate(context),
+              onTap: () => _selectDate(context, ref),
               style: const TextStyle(
                 fontSize: 20.0,
                 height: 1.0,
@@ -49,7 +47,8 @@ class VacationPeriodPage extends ConsumerWidget {
             ),
             const Text(Constant.vacationEndDateMessage),
             TextField(
-              controller: _endDateController,
+              controller: ref.watch(AppProvider.endDateControllerStateProvider),
+              // タップ時にキーワードを表示しないよう制御
               focusNode: AlwaysDisabledFocusNode(),
               style: const TextStyle(
                 fontSize: 20.0,

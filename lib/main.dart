@@ -54,7 +54,7 @@ class MyHomePage extends StatelessWidget {
       OutlinedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => VacationPeriodPage()));
+                builder: (BuildContext context) => const VacationPeriodPage()));
           },
           child: const Text('夏休みの期間登録画面')),
       OutlinedButton(
