@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/model/vacation_period.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
+
+import '../constant/constant.dart';
 
 /// アプリ内で使用するプロバイダーを定義するクラスです。
 class AppProvider {
@@ -10,4 +13,17 @@ class AppProvider {
   static final StateNotifierProvider periodProvider =
       StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>(
           (_) => VacationPeriodNotifier());
+
+  static final AutoDisposeStateProvider<TextEditingController>
+      startDateControllerStateProvider = StateProvider.autoDispose((ref) {
+    return TextEditingController(text: DateTime.now().toString());
+  });
+
+  static final AutoDisposeStateProvider<TextEditingController>
+      endDateControllerStateProvider = StateProvider.autoDispose((ref) {
+    return TextEditingController(
+        text: DateTime(
+                DateTime.now().year, DateTime.august, Constant.thirtyOneDays)
+            .toString());
+  });
 }

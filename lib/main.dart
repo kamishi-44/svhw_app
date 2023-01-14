@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/colors.dart';
+import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/view/vacation_period_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,6 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: AppColor.mainColor,
       ),
       home: const MyHomePage(title: 'SVHW Home Page'),
+      localizationsDelegates: Constant.localizationsDelegates,
+      supportedLocales: Constant.supportedLocales,
     );
   }
 }
@@ -48,8 +54,7 @@ class MyHomePage extends StatelessWidget {
       OutlinedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) =>
-                const VacationPeriodPage()));
+                builder: (BuildContext context) => const VacationPeriodPage()));
           },
           child: const Text('夏休みの期間登録画面')),
       OutlinedButton(
