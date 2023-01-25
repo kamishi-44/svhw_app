@@ -10,15 +10,6 @@ class VacationPeriodPage extends ConsumerWidget {
   /// コンストラクタ
   const VacationPeriodPage({super.key});
 
-  Future<DateTime?> _selectDate(BuildContext context) async {
-    return await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2024),
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -58,9 +49,7 @@ class VacationPeriodPage extends ConsumerWidget {
                         if (value != DateTime.now()) {
                           TextEditingController controller = ref.read(
                               AppProvider.startDateControllerStateProvider);
-                          DateFormat formatter =
-                          DateFormat('yyyy/MM/dd', 'ja-JP');
-                          controller.text = formatter.format(value!);
+                          controller.text = Constant.formatter.format(value!);
                         }
                       });
                     },
@@ -93,11 +82,9 @@ class VacationPeriodPage extends ConsumerWidget {
                       Future<DateTime?> selectedDate = _selectDate(context);
                       await selectedDate.then((value) {
                         if (value != DateTime.now()) {
-                          TextEditingController controller = ref.read(
-                              AppProvider.endDateControllerStateProvider);
-                          DateFormat formatter =
-                          DateFormat('yyyy/MM/dd', 'ja-JP');
-                          controller.text = formatter.format(value!);
+                          TextEditingController controller = ref
+                              .read(AppProvider.endDateControllerStateProvider);
+                          controller.text = Constant.formatter.format(value!);
                         }
                       });
                     },
@@ -109,6 +96,16 @@ class VacationPeriodPage extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// 日付選択ポップアップを開いて選択した日付を返します。
+Future<DateTime?> _selectDate(BuildContext context) async {
+  return await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(Constant.currentYear),
+    lastDate: DateTime(Constant.currentYear),
+  );
 }
 
 /// テキストフィールドタップ時にキーボードを表示しないよう制御するクラスです。
