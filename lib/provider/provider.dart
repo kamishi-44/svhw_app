@@ -16,14 +16,14 @@ class AppProvider {
 
   static final AutoDisposeStateProvider<TextEditingController>
       startDateControllerStateProvider = StateProvider.autoDispose((ref) {
-    return TextEditingController(text: DateTime.now().toString());
+    return TextEditingController(
+        text: Constant.formatter.format(DateTime.now()));
   });
 
   static final AutoDisposeStateProvider<TextEditingController>
       endDateControllerStateProvider = StateProvider.autoDispose((ref) {
     return TextEditingController(
-        text: DateTime(
-                DateTime.now().year, DateTime.august, Constant.thirtyOneDays)
-            .toString());
+        text: Constant.formatter.format(DateTime(
+            DateTime.now().year, DateTime.august, Constant.thirtyOneDays)));
   });
 }
