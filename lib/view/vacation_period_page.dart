@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/provider/provider.dart';
+import 'package:svhw_app/view/page_util.dart';
 
 /// 夏休みの期間を登録するページです。
 /// 夏休み情報が登録されていない場合のみ表示されます。
@@ -18,8 +18,8 @@ class VacationPeriodPage extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: Constant.vacationPeriodPageVerticalPadding,
-            vertical: 0),
+          horizontal: Constant.vacationPeriodPageVerticalPadding,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +37,6 @@ class VacationPeriodPage extends ConsumerWidget {
                     focusNode: AlwaysDisabledFocusNode(),
                     style: const TextStyle(
                       fontSize: 20.0,
-                      height: 1.0,
                       color: Colors.black,
                     ),
                   ),
@@ -56,9 +55,7 @@ class VacationPeriodPage extends ConsumerWidget {
                     child: const Icon(Icons.calendar_today)),
               ],
             ),
-            const SizedBox(
-              height: 100,
-            ),
+            PageUtil.getSizedBox(),
             const Text(Constant.vacationEndDateMessage),
             Row(
               children: [
@@ -72,7 +69,6 @@ class VacationPeriodPage extends ConsumerWidget {
                     focusNode: AlwaysDisabledFocusNode(),
                     style: const TextStyle(
                       fontSize: 20.0,
-                      height: 1.0,
                       color: Colors.black,
                     ),
                   ),
@@ -91,6 +87,14 @@ class VacationPeriodPage extends ConsumerWidget {
                     child: const Icon(Icons.calendar_today)),
               ],
             ),
+            PageUtil.getSizedBox(height: 70.0),
+            Container(
+              margin: const EdgeInsets.only(left: 250.0),
+              child: const ElevatedButton(
+                  // 次へタップ時に期間のデータ登録
+                  onPressed: null,
+                  child: Text('次へ')),
+            ),
           ],
         ),
       ),
@@ -104,7 +108,7 @@ Future<DateTime?> _selectDate(BuildContext context) async {
     context: context,
     initialDate: DateTime.now(),
     firstDate: DateTime(Constant.currentYear),
-    lastDate: DateTime(Constant.currentYear),
+    lastDate: DateTime(Constant.currentYear + 1),
   );
 }
 
