@@ -90,10 +90,19 @@ class VacationPeriodPage extends ConsumerWidget {
             PageUtil.getSizedBox(height: 70.0),
             Container(
               margin: const EdgeInsets.only(left: 250.0),
-              child: const ElevatedButton(
+              child: ElevatedButton(
                   // 次へタップ時に期間のデータ登録
-                  onPressed: null,
-                  child: Text('次へ')),
+                  onPressed: () {
+                    DateTime startDate = Constant.formatter.parseStrict(ref
+                        .read(AppProvider.startDateControllerStateProvider)
+                        .text);
+                    DateTime endDate = Constant.formatter.parseStrict(ref
+                        .read(AppProvider.endDateControllerStateProvider)
+                        .text);
+                    ref.read(AppProvider.periodProvider.notifier)
+                        .setPeriod(startDate, endDate);
+                  },
+                  child: const Text('次へ')),
             ),
           ],
         ),

@@ -10,6 +10,7 @@ class VacationPeriod {
 
   /// 夏休みの開始日
   final DateTime startDate;
+
   /// 夏休みの終了日
   final DateTime endDate;
 
