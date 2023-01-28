@@ -6,10 +6,10 @@ import 'package:svhw_app/model/vacation_period.dart';
 class VacationPeriodNotifier extends StateNotifier<VacationPeriod> {
   VacationPeriodNotifier()
       : super(VacationPeriod(
-            startDate: DateTime.now(),
-            // 夏休みの終了日は初期値として8/31とする。
-            endDate: DateTime(
-                DateTime.now().year, DateTime.august, Constant.thirtyOneDays)));
+      startDate: DateTime.now(),
+      // 夏休みの終了日は初期値として8/31とする。
+      endDate: DateTime(
+          DateTime.now().year, DateTime.august, Constant.thirtyOneDays)));
 
   /// 夏休みの期間を設定します。
   /// startDate に開始日、endDate に終了日を設定して呼び出します。

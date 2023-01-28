@@ -10,9 +10,10 @@ class AppProvider {
   /// 夏休みの期間のプロバイダーです。
   /// 夏休みの開始日と終了日の状態を監視します。
   /// 夏休みの期間登録画面で使用します。
-  static final StateNotifierProvider periodProvider =
-      StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>(
-          (_) => VacationPeriodNotifier());
+  static final StateNotifierProvider<VacationPeriodNotifier, VacationPeriod> periodProvider =
+      StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>((ref) {
+    return VacationPeriodNotifier();
+  });
 
   static final AutoDisposeStateProvider<TextEditingController>
       startDateControllerStateProvider = StateProvider.autoDispose((ref) {
