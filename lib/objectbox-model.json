@@ -1,0 +1,119 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7416538436566344744",
+      "lastPropertyId": "3:4791172100840693595",
+      "name": "Homework",
+      "properties": [
+        {
+          "id": "1:3129675219010325285",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4722468817945567841",
+          "name": "subject",
+          "type": 9
+        },
+        {
+          "id": "3:4791172100840693595",
+          "name": "homeworkType",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5037503503231369054",
+      "lastPropertyId": "4:2680886351427564234",
+      "name": "Progress",
+      "properties": [
+        {
+          "id": "1:1738934567779255837",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8652132213613752046",
+          "name": "homeworkId",
+          "type": 6
+        },
+        {
+          "id": "3:6437986096626632288",
+          "name": "total",
+          "type": 6
+        },
+        {
+          "id": "4:2680886351427564234",
+          "name": "done",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:4580867874821155882",
+      "lastPropertyId": "3:3555593146566625753",
+      "name": "Weather",
+      "properties": [
+        {
+          "id": "1:6693214501218201349",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6965383958094302565",
+          "name": "weatherType",
+          "type": 6
+        },
+        {
+          "id": "3:3555593146566625753",
+          "name": "date",
+          "type": 10
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:7152049473399866916",
+      "lastPropertyId": "3:8073381209560686703",
+      "name": "VacationPeriod",
+      "properties": [
+        {
+          "id": "1:8087034326838057250",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5800907435810813665",
+          "name": "startDate",
+          "type": 10
+        },
+        {
+          "id": "3:8073381209560686703",
+          "name": "endDate",
+          "type": 10
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:7152049473399866916",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
