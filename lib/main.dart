@@ -4,7 +4,15 @@ import 'package:svhw_app/constant/colors.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/view/vacation_period_page.dart';
 
-void main() {
+import 'objectbox.g.dart';
+
+/// ObjectBoxのストア
+late Store store;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  store = await openStore();
+
   runApp(
     const ProviderScope(child: MyApp()),
   );
