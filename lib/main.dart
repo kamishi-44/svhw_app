@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/colors.dart';
 import 'package:svhw_app/constant/constant.dart';
+import 'package:svhw_app/view/register_homework_page.dart';
 import 'package:svhw_app/view/vacation_period_page.dart';
 
 import 'objectbox.g.dart';
@@ -67,7 +68,9 @@ class MyHomePage extends StatelessWidget {
           child: const Text('夏休みの期間登録画面')),
       OutlinedButton(
           onPressed: () {
-            null;
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    const RegisterHomeworkPage()));
           },
           child: const Text('宿題内容登録画面')),
       OutlinedButton(

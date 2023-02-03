@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/provider/provider.dart';
 import 'package:svhw_app/view/page_util.dart';
+import 'package:svhw_app/view/register_homework_page.dart';
 
 /// 夏休みの期間を登録するページです。
 /// 夏休み情報が登録されていない場合のみ表示されます。
@@ -99,8 +100,12 @@ class VacationPeriodPage extends ConsumerWidget {
                     DateTime endDate = Constant.formatter.parseStrict(ref
                         .read(AppProvider.endDateControllerStateProvider)
                         .text);
-                    ref.read(AppProvider.periodProvider.notifier)
+                    ref
+                        .read(AppProvider.periodProvider.notifier)
                         .setPeriod(startDate, endDate);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const RegisterHomeworkPage()));
                   },
                   child: const Text('次へ')),
             ),
