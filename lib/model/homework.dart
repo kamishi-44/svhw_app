@@ -9,6 +9,7 @@ class Homework {
 
   /// 科目
   String subject;
+
   /// 宿題の種別(テキスト or プリント)
   int homeworkType;
 
@@ -26,6 +27,15 @@ extension HomeworkTypeExtension on HomeworkType {
     HomeworkType.print: 2,
   };
 
+  /// 種別を表す文字列
+  static final values = {
+    HomeworkType.text: 'テキスト',
+    HomeworkType.print: 'プリント',
+  };
+
   /// 種別に対応する数値を取得します。
-  int get statusInt => intValues[this]!;
+  int get typeInt => intValues[this]!;
+
+  /// 種別に対応する文字列を取得します。
+  String get typeValue => values[this]!;
 }
