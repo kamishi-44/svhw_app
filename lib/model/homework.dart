@@ -4,6 +4,7 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class Homework {
   /// ID
+  @Id()
   int id;
 
   /// 科目

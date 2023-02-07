@@ -107,7 +107,7 @@ class VacationPeriodPage extends ConsumerWidget {
                         builder: (BuildContext context) =>
                             const RegisterHomeworkPage()));
                   },
-                  child: const Text('次へ')),
+                  child: const Text(Constant.nextMessage)),
             ),
           ],
         ),

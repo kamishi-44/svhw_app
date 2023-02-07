@@ -15,12 +15,16 @@ class AppProvider {
     return VacationPeriodNotifier();
   });
 
+  /// 夏休みの期間登録画面の入力フィールド
+  /// 夏休みの開始日のプロバイダーです。
   static final AutoDisposeStateProvider<TextEditingController>
       startDateControllerStateProvider = StateProvider.autoDispose((ref) {
     return TextEditingController(
         text: Constant.formatter.format(DateTime.now()));
   });
 
+  /// 夏休みの期間登録画面の入力フィールド
+  /// 夏休みの終了日のプロバイダーです。
   static final AutoDisposeStateProvider<TextEditingController>
       endDateControllerStateProvider = StateProvider.autoDispose((ref) {
     return TextEditingController(

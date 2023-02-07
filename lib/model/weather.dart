@@ -4,6 +4,7 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class Weather {
   /// ID
+  @Id()
   int id;
 
   /// 天気

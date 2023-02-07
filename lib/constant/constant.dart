@@ -19,6 +19,15 @@ class Constant {
   /// メッセージ：夏休みの終わり
   static const String vacationEndDateMessage = '夏休みのおわり';
 
+  /// メッセージ：次へ
+  static const String nextMessage = '次へ';
+
+  /// メッセージ：登録
+  static const String registerMessage = '登録';
+
+  /// メッセージ：宿題の追加
+  static const String addSubjectMessage = '宿題の追加';
+
   /// 本アプリで使用する日付のフォーマット
   static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
 
