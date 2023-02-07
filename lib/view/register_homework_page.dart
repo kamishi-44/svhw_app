@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/constant.dart';
+import 'package:svhw_app/provider/provider.dart';
 import 'package:svhw_app/view/page_util.dart';
 
 /// 夏休みの宿題を登録する画面です。
@@ -11,6 +12,8 @@ class RegisterHomeworkPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final homeworks = ref.watch(AppProvider.homeworkProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('夏休みの宿題登録画面'),
