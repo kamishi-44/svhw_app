@@ -4,6 +4,7 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class Progress {
   /// ID
+  @Id()
   int id;
 
   /// 宿題ID
