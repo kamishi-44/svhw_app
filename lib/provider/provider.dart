@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:svhw_app/model/homework.dart';
 import 'package:svhw_app/model/vacation_period.dart';
 import 'package:svhw_app/provider/notifier/homework_notifier.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
@@ -35,6 +36,6 @@ class AppProvider {
   });
 
   /// 登録する宿題を管理するプロバイダーです。
-  static final StateNotifierProvider homeworkProvider =
-      StateNotifierProvider((ref) => HomeworkNotifier());
+  static final homeworkProvider =
+      Provider<List<Map<String, HomeworkType>>>((ref) => []);
 }

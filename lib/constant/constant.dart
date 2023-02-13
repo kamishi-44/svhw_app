@@ -4,6 +4,18 @@ import 'package:intl/intl.dart';
 
 /// アプリ内で使用する定数を定義します。
 class Constant {
+  /// 多言語対応
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
+
+  /// 本アプリで対応する言語
+  static const List<Locale> supportedLocales = [
+    Locale('ja', ''),
+    Locale('en', ''),
+  ];
+
   /// 現在の西暦
   static final int currentYear = DateTime.now().year;
 
@@ -28,18 +40,18 @@ class Constant {
   /// メッセージ：宿題の追加
   static const String addSubjectMessage = '宿題の追加';
 
+  /// メッセージ：追加する宿題を選択します。
+  static const String selectHomeworkMessage = '追加する宿題を選択します。';
+
   /// 本アプリで使用する日付のフォーマット
   static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
 
-  /// 多言語対応
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = [
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
-
-  /// 本アプリで対応する言語
-  static const List<Locale> supportedLocales = [
-    Locale('ja', ''),
-    Locale('en', ''),
+  /// 本アプリで選択できる宿題の教科
+  static final List<String> subjects = [
+    '国語',
+    '算数',
+    '英語',
+    '理科',
+    '社会',
   ];
 }
