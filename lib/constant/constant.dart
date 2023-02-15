@@ -43,6 +43,9 @@ class Constant {
   /// メッセージ：追加する宿題を選択します。
   static const String selectHomeworkMessage = '追加する宿題を選択します。';
 
+  /// メッセージ：選択してください。
+  static const String dropDownHintMessage = '選択してください。';
+
   /// 本アプリで使用する日付のフォーマット
   static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
 

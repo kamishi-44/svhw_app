@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/provider/provider.dart';
 import 'package:svhw_app/view/page_util.dart';
+import 'package:svhw_app/view/parts/subject_dropdown_button.dart';
 
 import '../model/homework.dart';
 
@@ -70,7 +71,7 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: const Text(Constant.selectHomeworkMessage),
-          content: const Text('AlertDialog description'),
+          content: const SubjectDropdownButton(),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'Cancel'),
