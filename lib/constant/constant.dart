@@ -57,4 +57,9 @@ class Constant {
     '理科',
     '社会',
   ];
+
+  static final List<String> dropDownItems = [
+    dropDownHintMessage,
+    ... subjects
+  ];
 }

@@ -40,5 +40,5 @@ class AppProvider {
 
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
   static StateProvider<String> selectSubjectProvider =
-      StateProvider<String>((ref) => Constant.subjects[0]);
+      StateProvider<String>((ref) => Constant.dropDownItems[0]);
 }

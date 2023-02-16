@@ -14,16 +14,22 @@ class SubjectDropdownButton extends ConsumerWidget {
     final String selectSubject = ref.watch(AppProvider.selectSubjectProvider);
 
     return DropdownButton<String>(
-      hint: const Text(Constant.dropDownHintMessage),
       value: selectSubject,
       onChanged: (value) =>
       ref.read(AppProvider.selectSubjectProvider.notifier).state = value!,
-      items: Constant.subjects.map<DropdownMenuItem<String>>((subject) {
+      items: Constant.dropDownItems.map<DropdownMenuItem<String>>((subject) {
         return DropdownMenuItem(
           value: subject,
           child: Text(subject),
         );
       }).toList(),
     );
+  }
+
+  /// ドロップダウンに表示するアイテムを取得します。
+  List<String> _getDropDownItems() {
+    List<String> items = Constant.subjects;
+    items.insert(0, Constant.dropDownHintMessage);
+    return items;
   }
 }
