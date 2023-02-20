@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/provider/provider.dart';
 
-import '../../constant/constant.dart';
+import '../../../../../constant/constant.dart';
 
 /// 科目を選択するプルダウンのWidgetです。
 class SubjectDropdownButton extends ConsumerWidget {
@@ -24,12 +23,5 @@ class SubjectDropdownButton extends ConsumerWidget {
         );
       }).toList(),
     );
-  }
-
-  /// ドロップダウンに表示するアイテムを取得します。
-  List<String> _getDropDownItems() {
-    List<String> items = Constant.subjects;
-    items.insert(0, Constant.dropDownHintMessage);
-    return items;
   }
 }
