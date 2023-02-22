@@ -35,10 +35,13 @@ class AppProvider {
   });
 
   /// 登録する宿題を管理するプロバイダーです。
-  static final Provider<List<Map<String, HomeworkType>>> homeworkProvider =
-      Provider<List<Map<String, HomeworkType>>>((ref) => []);
+  static final StateProvider<List<Map<String, HomeworkType>>> homeworkProvider =
+      StateProvider<List<Map<String, HomeworkType>>>((ref) => []);
 
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
   static StateProvider<String> selectSubjectProvider =
       StateProvider<String>((ref) => Constant.dropDownItems[0]);
+
+  static StateProvider<HomeworkType> selectTypeProvider =
+      StateProvider<HomeworkType>((ref) => HomeworkType.text);
 }

@@ -58,6 +58,7 @@ class Constant {
     '社会',
   ];
 
+  /// 科目選択プルダウンで表示するリスト
   static final List<String> dropDownItems = [
     dropDownHintMessage,
     ... subjects
