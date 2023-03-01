@@ -15,7 +15,7 @@ class RegisterHomeworkPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<Map<String, HomeworkType>> homeworks =
+    List<Map<String, HomeworkType>> homeworks =
         ref.watch(AppProvider.homeworkProvider);
 
     return Scaffold(
@@ -99,9 +99,10 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
                     ref.read(AppProvider.selectSubjectProvider);
                 final HomeworkType selectType =
                     ref.read(AppProvider.selectTypeProvider);
-                List<Map<String, HomeworkType>> selectedHomework =
-                    ref.read(AppProvider.homeworkProvider);
-                selectedHomework.add({selectSubject: selectType});
+                List<Map<String, HomeworkType>> homeworks = ref.read(AppProvider.homeworkProvider);
+                homeworks.add({selectSubject: selectType});
+                ref.read(AppProvider.homeworkProvider.notifier).state =
+                   [...homeworks];
                 Navigator.pop(context, 'OK');
               },
               child: const Text('OK'),
