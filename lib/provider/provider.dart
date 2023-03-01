@@ -39,9 +39,9 @@ class AppProvider {
       StateProvider<List<Map<String, HomeworkType>>>((ref) => []);
 
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
-  static StateProvider<String> selectSubjectProvider =
-      StateProvider<String>((ref) => Constant.dropDownItems[0]);
+  static AutoDisposeStateProvider<String> selectSubjectProvider =
+      StateProvider.autoDispose((ref) => Constant.dropDownItems[0]);
 
-  static StateProvider<HomeworkType> selectTypeProvider =
-      StateProvider<HomeworkType>((ref) => HomeworkType.text);
+  static AutoDisposeStateProvider<HomeworkType> selectTypeProvider =
+      StateProvider.autoDispose((ref) => HomeworkType.text);
 }
