@@ -30,8 +30,6 @@ class RegisterHomeworkPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // 空のリストを用意(プロバイダーがいいか)
-            // 宿題追加で追加された教科の名称を一覧で表示していく
             ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -99,10 +97,10 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
                     ref.read(AppProvider.selectSubjectProvider);
                 final HomeworkType selectType =
                     ref.read(AppProvider.selectTypeProvider);
-                List<Map<String, HomeworkType>> homeworks = ref.read(AppProvider.homeworkProvider);
-                homeworks.add({selectSubject: selectType});
+                List<Map<String, HomeworkType>> homeworks =
+                    ref.read(AppProvider.homeworkProvider);
                 ref.read(AppProvider.homeworkProvider.notifier).state =
-                   [...homeworks];
+                [...homeworks,...[{selectSubject : selectType}]];
                 Navigator.pop(context, 'OK');
               },
               child: const Text('OK'),
