@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/model/homework.dart';
 import 'package:svhw_app/model/vacation_period.dart';
+import 'package:svhw_app/provider/notifier/homework_notifier.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
 
 import '../constant/constant.dart';
@@ -35,13 +36,15 @@ class AppProvider {
   });
 
   /// 登録する宿題を管理するプロバイダーです。
-  static final StateProvider<List<Map<String, HomeworkType>>> homeworkProvider =
-      StateProvider<List<Map<String, HomeworkType>>>((ref) => []);
+  static final StateNotifierProvider<HomeworkNotifier, List<Homework>>
+      homeworksProvider =
+      StateNotifierProvider<HomeworkNotifier, List<Homework>>(
+          (ref) => HomeworkNotifier());
 
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
-  static AutoDisposeStateProvider<String> selectSubjectProvider =
+  static final AutoDisposeStateProvider<String> selectSubjectProvider =
       StateProvider.autoDispose((ref) => Constant.dropDownItems[0]);
 
-  static AutoDisposeStateProvider<HomeworkType> selectTypeProvider =
+  static final AutoDisposeStateProvider<HomeworkType> selectTypeProvider =
       StateProvider.autoDispose((ref) => HomeworkType.text);
 }
