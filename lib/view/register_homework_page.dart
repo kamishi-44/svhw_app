@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:svhw_app/constant/constant.dart';
 import 'package:svhw_app/provider/provider.dart';
 import 'package:svhw_app/view/page_util.dart';
@@ -15,8 +16,7 @@ class RegisterHomeworkPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Homework> homeworks =
-        ref.watch(AppProvider.homeworksProvider);
+    List<Homework> homeworks = ref.watch(AppProvider.homeworksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,29 +30,55 @@ class RegisterHomeworkPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: homeworks.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Homework homework = homeworks[index];
+            SlidableAutoCloseBehavior(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: homeworks.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Homework homework = homeworks[index];
 
-                  return Text(
-                    homework.subject,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
-                  );
-                }),
+                    return Slidable(
+                        key: UniqueKey(),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {
+                                ref.read(AppProvider.homeworksProvider.notifier)
+                                    .removeHomeWork(homework.id);
+                              },
+                              flex: 2,
+                              backgroundColor: const Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            homework.subject,
+                            style: const TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ));
+                  }),
+            ),
             const _SelectHomeworkDialogButton(),
             PageUtil.getSizedBox(),
             Container(
               margin: const EdgeInsets.only(left: 250.0),
               child: ElevatedButton(
-                  // 登録タップ時に期間のデータ登録
+                  // 登録タップ時に宿題、期間のデータ登録
                   onPressed: () {
-                    print('夏休みの期間と宿題を登録するよー。');
+                    ref
+                        .read(AppProvider.periodProvider.notifier)
+                        .insertPeriod();
+                    ref
+                        .read(AppProvider.homeworksProvider.notifier)
+                        .insertHomeworks();
                   },
                   child: const Text(Constant.registerMessage)),
             ),
