@@ -13,7 +13,7 @@ abstract class HomePageRepository {
   VacationPeriod vacationPeriod();
 
   /// 登録されている夏休みの宿題一覧を返します。
-  List<Homework> registeredHomework();
+  List<Homework> registeredHomeworks();
 }
 
 class HomePageRepositoryImpl implements HomePageRepository {
@@ -25,7 +25,7 @@ class HomePageRepositoryImpl implements HomePageRepository {
   }
 
   @override
-  List<Homework> registeredHomework() {
+  List<Homework> registeredHomeworks() {
     final Box<Homework> homeworkBox = store.box<Homework>();
     final List<Homework> homeworks = homeworkBox.getAll();
     return homeworks;
