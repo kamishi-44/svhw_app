@@ -46,6 +46,12 @@ class Constant {
   /// メッセージ：選択してください。
   static const String dropDownHintMessage = '選択してください。';
 
+  /// メッセージ：追加
+  static const String addMessage = '追加';
+
+  /// メッセージ：戻る
+  static const String cancelMessage = '戻る';
+
   /// 本アプリで使用する日付のフォーマット
   static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
 

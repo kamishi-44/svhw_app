@@ -7,6 +7,7 @@ import 'package:svhw_app/view/page_util.dart';
 import 'package:svhw_app/view/parts/dropdown_button.dart';
 
 import '../model/homework.dart';
+import 'home_page.dart';
 
 /// 夏休みの宿題を登録する画面です。
 /// 夏休みの情報を登録するときにだけ遷移できる画面で
@@ -79,6 +80,9 @@ class RegisterHomeworkPage extends ConsumerWidget {
                     ref
                         .read(AppProvider.homeworksProvider.notifier)
                         .insertHomeworks();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                        const HomePage()));
                   },
                   child: const Text(Constant.registerMessage)),
             ),
@@ -111,8 +115,8 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
+              onPressed: () => Navigator.pop(context, Constant.cancelMessage),
+              child: const Text(Constant.cancelMessage),
             ),
             TextButton(
               onPressed: () {
@@ -124,9 +128,9 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
                     Homework(
                         subject: selectSubject,
                         homeworkType: selectType.typeInt));
-                Navigator.pop(context, 'OK');
+                Navigator.pop(context, Constant.addMessage);
               },
-              child: const Text('OK'),
+              child: const Text(Constant.addMessage),
             ),
           ],
         ),
