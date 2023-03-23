@@ -14,15 +14,15 @@ class SubjectDropdownButton extends ConsumerWidget {
     final String selectSubject = ref.watch(AppProvider.selectSubjectProvider);
 
     return DropdownButton<String>(
-      value: selectSubject,
-      onChanged: (value) =>
-          ref.read(AppProvider.selectSubjectProvider.notifier).state = value!,
-      items: Constant.dropDownItems.map<DropdownMenuItem<String>>((subject) {
-        return DropdownMenuItem(
-          value: subject,
-          child: Text(subject),
-        );
-      }).toList(),
+        value: selectSubject,
+        onChanged: (value) =>
+            ref.read(AppProvider.selectSubjectProvider.notifier).state = value!,
+        items: Constant.dropDownItems.map<DropdownMenuItem<String>>((subject) {
+          return DropdownMenuItem(
+            value: subject,
+            child: Text(subject),
+          );
+        }).toList()
     );
   }
 }

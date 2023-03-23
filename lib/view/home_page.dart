@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/model/homework.dart';
 import 'package:svhw_app/model/vacation_period.dart';
 import 'package:svhw_app/repository/homepage_repository.dart';
+import 'package:svhw_app/view/parts/progress_indicator.dart';
 
 /// 現在の宿題の状況を確認できるページです。
 /// 宿題が既に登録されている場合は最初に表示されるページになります。
@@ -23,6 +24,7 @@ class HomePage extends ConsumerWidget {
         child: Column(
           children: [
             const Text('ホーム画面だよー。'),
+            const VacationPeriodIndicator(),
             Text('夏休みの始まり -> ${period.dispStartDate}'),
             Text('夏休みの終わり -> ${period.dispEndDate}'),
             ListView.builder(
