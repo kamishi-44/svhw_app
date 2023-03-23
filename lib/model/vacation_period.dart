@@ -30,4 +30,9 @@ class VacationPeriod {
         startDate: startDate ?? this.startDate,
         endDate: endDate ?? this.endDate);
   }
+
+  /// 夏休みの日数を返します。
+  int vacationDays() {
+    return endDate.difference(startDate).inDays;
+  }
 }
