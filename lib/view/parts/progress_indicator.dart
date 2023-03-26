@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/vacation_period.dart';
@@ -22,7 +21,9 @@ class VacationPeriodIndicator extends StatelessWidget {
   double _indicatorValue() {
     final HomePageRepository homePageRepository = HomePageRepositoryImpl();
     final VacationPeriod period = homePageRepository.vacationPeriod();
-    int lapsedDays = DateTime.now().difference(period.startDate).inDays;
+    final testDate = DateTime(DateTime.now().year, DateTime.august, 5);
+    int lapsedDays = testDate.difference(period.startDate).inDays;
+    // int lapsedDays = DateTime.now().difference(period.startDate).inDays;
     return lapsedDays / period.vacationDays();
   }
 }

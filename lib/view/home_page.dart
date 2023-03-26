@@ -24,11 +24,16 @@ class HomePage extends ConsumerWidget {
         child: Column(
           children: [
             const Text('ホーム画面だよー。'),
-            const VacationPeriodIndicator(),
+            Row(
+              children: [
+                Container(padding: const EdgeInsets.only(left: 8), width: 300, child: const VacationPeriodIndicator()),
+                const Expanded(child: Icon(Icons.sunny, color: Colors.orange,)),
+              ],
+            ),
             Text('夏休みの始まり -> ${period.dispStartDate}'),
             Text('夏休みの終わり -> ${period.dispEndDate}'),
             ListView.builder(
-              shrinkWrap: true,
+                shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: homeworks.length,
                 itemBuilder: (BuildContext context, int index) {
