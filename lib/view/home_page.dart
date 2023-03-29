@@ -26,7 +26,9 @@ class HomePage extends ConsumerWidget {
             const Text('ホーム画面だよー。'),
             Row(
               children: [
-                Container(padding: const EdgeInsets.only(left: 8), width: 300, child: const VacationPeriodIndicator()),
+                Container(padding: const EdgeInsets.only(left: 8),
+                    width: 300,
+                    child: const VacationPeriodIndicator()),
                 const Expanded(child: Icon(Icons.sunny, color: Colors.orange,)),
               ],
             ),
