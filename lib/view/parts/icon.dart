@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../constant//my_flutter_app_icons.dart';
 
 /// その日の天気予報を取得し、天気に合ったアイコンを
 /// 取得できるクラスです。
@@ -8,19 +8,21 @@ class WeatherIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return _Weather.rainy.icon;
   }
 }
 
 /// 天気の種類の Enum です。
-enum Weather { sunny, cloudy, rainy }
+enum _Weather { sunny, cloudy, rainy }
 
 /// Weather のエクステンションです。
-extension WeatherExtension on Weather {
+extension on _Weather {
   static final icons = {
-    Weather.sunny: const Icon(Icons.wb_sunny, color: Colors.redAccent),
-    Weather.cloudy: const Icon(Icons.wb_cloudy, color: Colors.white38),
-    Weather.rainy: const Icon(Icons.beach_access, color: Colors.blue)
+    _Weather.sunny: const Icon(Icons.wb_sunny, color: Colors.redAccent),
+    _Weather.cloudy: const Icon(Icons.wb_cloudy, color: Colors.white38),
+    _Weather.rainy: const Icon(MyFlutterApp.umbrella, color: Colors.blue)
   };
+
+  /// 天気に対応するアイコンを返します。
+  Icon get icon => icons[this]!;
 }
