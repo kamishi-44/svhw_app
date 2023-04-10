@@ -42,3 +42,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# API で使用するキーを管理するファイルを除外
+api_keys.json

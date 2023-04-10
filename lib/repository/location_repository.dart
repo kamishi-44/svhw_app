@@ -22,7 +22,7 @@ class LocationRepositoryImpl implements LocationRepository {
     return await Geolocator.getCurrentPosition();
   }
 
-  /// 端末の位置情報サービスが有効であるかを判定します。
+  /// 端末の位置情報サービスが有効の場合 true を返します。
   /// 有効でない場合は _errorFuture に有効でないメッセージを
   /// 設定した Future を設定します。
   Future<bool> _isEnabledLocationService() async {
