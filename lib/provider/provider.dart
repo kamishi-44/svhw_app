@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:svhw_app/model/homework.dart';
 import 'package:svhw_app/model/vacation_period.dart';
+import 'package:svhw_app/provider/notifier/api_json_repository_notifier.dart';
 import 'package:svhw_app/provider/notifier/homework_notifier.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
+import 'package:svhw_app/repository/api_json_repository.dart';
 
 import '../constant/constant.dart';
 
@@ -47,4 +49,11 @@ class AppProvider {
 
   static final AutoDisposeStateProvider<HomeworkType> selectTypeProvider =
       StateProvider.autoDispose((ref) => HomeworkType.text);
+
+  /// api_key.json の読み込みを行うリポジトリのプロバイダーです。
+  static final StateNotifierProvider<ApiJsonRepositoryNotifier,
+          Provider<ApiJsonRepositoryImpl>> apiJsonNotifierProvider =
+      StateNotifierProvider<ApiJsonRepositoryNotifier,
+              Provider<ApiJsonRepositoryImpl>>(
+          (ref) => ApiJsonRepositoryNotifier());
 }
