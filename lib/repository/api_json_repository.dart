@@ -24,10 +24,9 @@ class ApiJsonRepositoryImpl implements ExternalJsonRepository {
   }
 
   @override
-  Future<void> fetchJsonFile() async {
-    if (_jsonArray.isNotEmpty) return;
-    String jsonString = await rootBundle.loadString(_filePath);
-    _jsonArray = json.decode(jsonString);
+  Future<List<dynamic>> fetchJsonFile() async {
+      String jsonString = await rootBundle.loadString(_filePath);
+      return json.decode(jsonString);
   }
 
   /// 指定したAPI名のキーを取得します。

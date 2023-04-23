@@ -14,46 +14,49 @@ class AppProvider {
   /// 夏休みの期間のプロバイダーです。
   /// 夏休みの開始日と終了日の状態を監視します。
   /// 夏休みの期間登録画面で使用します。
-  static final StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>
-      periodProvider =
+  static final periodProvider =
       StateNotifierProvider<VacationPeriodNotifier, VacationPeriod>((ref) {
     return VacationPeriodNotifier();
   });
 
   /// 夏休みの期間登録画面の入力フィールド
   /// 夏休みの開始日のプロバイダーです。
-  static final AutoDisposeStateProvider<TextEditingController>
-      startDateControllerStateProvider = StateProvider.autoDispose((ref) {
+  static final startDateControllerStateProvider =
+      StateProvider.autoDispose((ref) {
     return TextEditingController(
         text: Constant.formatter.format(DateTime.now()));
   });
 
   /// 夏休みの期間登録画面の入力フィールド
   /// 夏休みの終了日のプロバイダーです。
-  static final AutoDisposeStateProvider<TextEditingController>
-      endDateControllerStateProvider = StateProvider.autoDispose((ref) {
+  static final endDateControllerStateProvider =
+      StateProvider.autoDispose((ref) {
     return TextEditingController(
         text: Constant.formatter.format(DateTime(
             DateTime.now().year, DateTime.august, Constant.thirtyOneDays)));
   });
 
   /// 登録する宿題を管理するプロバイダーです。
-  static final StateNotifierProvider<HomeworkNotifier, List<Homework>>
-      homeworksProvider =
+  static final homeworksProvider =
       StateNotifierProvider<HomeworkNotifier, List<Homework>>(
           (ref) => HomeworkNotifier());
 
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
-  static final AutoDisposeStateProvider<String> selectSubjectProvider =
+  static final selectSubjectProvider =
       StateProvider.autoDispose((ref) => Constant.dropDownItems[0]);
 
-  static final AutoDisposeStateProvider<HomeworkType> selectTypeProvider =
+  static final selectTypeProvider =
       StateProvider.autoDispose((ref) => HomeworkType.text);
 
   /// api_key.json の読み込みを行うリポジトリのプロバイダーです。
-  static final StateNotifierProvider<ApiJsonRepositoryNotifier,
-          Provider<ApiJsonRepositoryImpl>> apiJsonNotifierProvider =
-      StateNotifierProvider<ApiJsonRepositoryNotifier,
-              Provider<ApiJsonRepositoryImpl>>(
-          (ref) => ApiJsonRepositoryNotifier());
+  static final _apiJsonRepositoryProvider =
+      Provider<ApiJsonRepositoryImpl>((ref) {
+    return ApiJsonRepositoryImpl();
+  });
+
+  /// api_key.json の読み込みを管理するのプロバイダーです。
+  static final apiJsonNotifierProvider = StateNotifierProvider<
+          ApiJsonRepositoryNotifier, AsyncValue<List<dynamic>>>(
+      (ref) =>
+          ApiJsonRepositoryNotifier(ref.watch(_apiJsonRepositoryProvider)));
 }
