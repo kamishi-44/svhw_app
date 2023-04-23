@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 # API で使用するキーを管理するファイルを除外
-api_keys.json
+json/api_keys.json
