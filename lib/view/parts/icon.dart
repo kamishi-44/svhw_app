@@ -11,13 +11,18 @@ class WeatherIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final apiJsonNotifier =
-        ref.watch(AppProvider.apiJsonNotifierProvider.notifier);
+    return ref.watch(AppProvider.locationProvider).when(
+        data: (position) {
+          final apiJsonNotifier =
+              ref.watch(AppProvider.apiJsonNotifierProvider.notifier);
 
-    return ref.watch(AppProvider.apiJsonNotifierProvider).when(
-        data: (_) {
-          String apiKey = apiJsonNotifier.getKeyByApiName('Weather');
-          return const Icon(Icons.wb_sunny, color: Colors.redAccent);
+          return ref.watch(AppProvider.apiJsonNotifierProvider).when(
+              data: (_) {
+                String apiKey = apiJsonNotifier.getKeyByApiName('Weather');
+                return const Icon(Icons.wb_sunny, color: Colors.redAccent);
+              },
+              error: (_, __) => const Icon(Icons.error),
+              loading: () => const CircularProgressIndicator());
         },
         error: (_, __) => const Icon(Icons.error),
         loading: () => const CircularProgressIndicator());

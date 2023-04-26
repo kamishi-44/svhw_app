@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:svhw_app/model/homework.dart';
 import 'package:svhw_app/model/vacation_period.dart';
 import 'package:svhw_app/provider/notifier/api_json_repository_notifier.dart';
 import 'package:svhw_app/provider/notifier/homework_notifier.dart';
 import 'package:svhw_app/provider/notifier/vacation_period_notifier.dart';
 import 'package:svhw_app/repository/api_json_repository.dart';
+import 'package:svhw_app/repository/location_repository.dart';
 
 import '../constant/constant.dart';
 
@@ -59,4 +61,10 @@ class AppProvider {
           ApiJsonRepositoryNotifier, AsyncValue<List<dynamic>>>(
       (ref) =>
           ApiJsonRepositoryNotifier(ref.watch(_apiJsonRepositoryProvider)));
+
+  /// GeoLocation のプロバイダーです。
+  static final locationProvider = FutureProvider<Position>((ref) {
+    LocationRepositoryImpl locationRepository = LocationRepositoryImpl();
+    return locationRepository.getCurrentPosition();
+  });
 }
