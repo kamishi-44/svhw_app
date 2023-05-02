@@ -9,7 +9,7 @@ class ApiJsonRepositoryImpl implements ExternalJsonRepository {
   static const String _filePath = 'json/api_keys.json';
 
   /// 読み込んだJSONのリスト
-  List<dynamic> _jsonArray = [];
+  List<dynamic> _jsonData = [];
 
   @override
   String getValue(String key, [int index = 0]) {
@@ -17,16 +17,17 @@ class ApiJsonRepositoryImpl implements ExternalJsonRepository {
       return '';
     }
 
-    if (_jsonArray.isEmpty) {
+    if (_jsonData.isEmpty) {
       return '';
     }
-    return _jsonArray[index][key];
+    return _jsonData[index][key];
   }
 
   @override
   Future<List<dynamic>> fetchJsonFile() async {
       String jsonString = await rootBundle.loadString(_filePath);
-      return json.decode(jsonString);
+      _jsonData = json.decode(jsonString);
+      return _jsonData;
   }
 
   /// 指定したAPI名のキーを取得します。
@@ -35,11 +36,11 @@ class ApiJsonRepositoryImpl implements ExternalJsonRepository {
       return '';
     }
 
-    if (_jsonArray.isEmpty) {
+    if (_jsonData.isEmpty) {
       return '';
     }
 
-    for (Map<String, dynamic> element in _jsonArray) {
+    for (Map<String, dynamic> element in _jsonData) {
       if (apiName == element['name']) {
         return element['key'];
       }

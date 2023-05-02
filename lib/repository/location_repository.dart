@@ -12,7 +12,7 @@ abstract class LocationRepository {
 /// Geolocator を使用して現在位置(緯度経度)を取得します。
 class LocationRepositoryImpl implements LocationRepository {
   /// 位置情報が有効でなかった場合に設定される Future
-  late Future<Position> _errorFuture;
+  late final Future<Position> _errorFuture;
 
   @override
   Future<Position> getCurrentPosition() async {
