@@ -30,7 +30,6 @@ class WeatherIcon extends ConsumerWidget {
           return weatherIcon;
         },
         error: (_, __) => const Icon(Icons.error),
-        loading: () => const SizedBox(
-            height: 16, width: 16, child: CircularProgressIndicator()));
+        loading: () => const CircularProgressIndicator());
   }
 }
