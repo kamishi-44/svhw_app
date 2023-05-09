@@ -21,34 +21,36 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('宿題の進捗確認画面'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('ホーム画面だよー。'),
-            Row(
-              children: [
-                Container(
-                    padding: const EdgeInsets.only(left: 8),
-                    width: 300,
-                    child: const VacationPeriodIndicator()),
-                Flexible(
-                    child: Container(
-                        alignment: Alignment.center,
-                        child: const WeatherIcon())),
-              ],
-            ),
-            Text('夏休みの始まり -> ${period.dispStartDate}'),
-            Text('夏休みの終わり -> ${period.dispEndDate}'),
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: homeworks.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Text(homeworks[index].subject);
-                })
-          ],
+      body: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const SizedBox(
+                      width: 300,
+                      child: VacationPeriodIndicator()),
+                  Flexible(
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: const WeatherIcon())),
+                ],
+              ),
+              Text('夏休みの始まり -> ${period.dispStartDate}'),
+              Text('夏休みの終わり -> ${period.dispEndDate}'),
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: homeworks.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Text(homeworks[index].subject);
+                  })
+            ],
+          ),
         ),
       ),
+      // ボトムナビゲーションバーを追加
     );
   }
 }
