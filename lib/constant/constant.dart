@@ -52,6 +52,9 @@ class Constant {
   /// メッセージ：戻る
   static const String cancelMessage = '戻る';
 
+  /// メッセージ：ホーム
+  static const String homeMessage = 'ホーム';
+
   /// 本アプリで使用する日付のフォーマット
   static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
 
