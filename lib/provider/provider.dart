@@ -66,4 +66,7 @@ class AppProvider {
     WeatherRepository weatherRepository = WeatherRepositoryImpl(apiKey);
     return weatherRepository.getCurrentWeatherByLocation(currentPosition);
   });
+
+  /// ホーム画面での表示ページを監視するプロバイダーです。
+  static final selectPageProvider = StateProvider<int>((_) => 0);
 }
