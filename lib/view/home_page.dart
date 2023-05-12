@@ -6,6 +6,8 @@ import 'package:svhw_app/repository/homepage_repository.dart';
 import 'package:svhw_app/view/parts/icon.dart';
 import 'package:svhw_app/view/parts/progress_indicator.dart';
 
+import '../constant/constant.dart';
+
 /// 現在の宿題の状況を確認できるページです。
 /// 宿題が既に登録されている場合は最初に表示されるページになります。
 class HomePage extends ConsumerWidget {
@@ -29,8 +31,12 @@ class HomePage extends ConsumerWidget {
               Row(
                 children: [
                   const SizedBox(
-                      width: 300,
+                      width: 250,
                       child: VacationPeriodIndicator()),
+                  // その日の日付けを表示
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                      child: Text(Constant.japanDateFormat.format(DateTime.now()))),
                   Flexible(
                       child: Container(
                           alignment: Alignment.center,

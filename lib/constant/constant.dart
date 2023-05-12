@@ -55,8 +55,11 @@ class Constant {
   /// メッセージ：ホーム
   static const String homeMessage = 'ホーム';
 
-  /// 本アプリで使用する日付のフォーマット
-  static final DateFormat formatter = DateFormat('yyyy/MM/dd', 'ja-JP');
+  /// 日付(yyyy/MM/dd)のフォーマット
+  static final DateFormat slashSeparateFormat = DateFormat('yyyy/MM/dd', 'ja-JP');
+
+  /// 日付(MM月dd日)のフォーマット
+  static final DateFormat japanDateFormat = DateFormat('MM月dd日', 'ja-JP');
 
   /// 本アプリで選択できる宿題の教科
   static final List<String> subjects = [

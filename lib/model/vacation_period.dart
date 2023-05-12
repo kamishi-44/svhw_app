@@ -19,10 +19,10 @@ class VacationPeriod {
   VacationPeriod({this.id = 0, required this.startDate, required this.endDate});
 
   /// 表示用(文字列)の開始日を返します。
-  String get dispStartDate => Constant.formatter.format(startDate);
+  String get dispStartDate => Constant.slashSeparateFormat.format(startDate);
 
   /// 表示用(文字列)の終了日を返します。
-  String get dispEndDate => Constant.formatter.format(endDate);
+  String get dispEndDate => Constant.slashSeparateFormat.format(endDate);
 
   /// オブジェクトのコピーを行います。
   VacationPeriod copyWith({DateTime? startDate, DateTime? endDate}) {

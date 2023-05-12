@@ -49,7 +49,7 @@ class VacationPeriodPage extends ConsumerWidget {
                         if (value != DateTime.now()) {
                           TextEditingController controller = ref.read(
                               AppProvider.startDateControllerStateProvider);
-                          controller.text = Constant.formatter.format(value!);
+                          controller.text = Constant.slashSeparateFormat.format(value!);
                         }
                       });
                     },
@@ -81,7 +81,7 @@ class VacationPeriodPage extends ConsumerWidget {
                         if (value != DateTime.now()) {
                           TextEditingController controller = ref
                               .read(AppProvider.endDateControllerStateProvider);
-                          controller.text = Constant.formatter.format(value!);
+                          controller.text = Constant.slashSeparateFormat.format(value!);
                         }
                       });
                     },
@@ -94,10 +94,10 @@ class VacationPeriodPage extends ConsumerWidget {
               child: ElevatedButton(
                   // 次へタップ時に期間のデータ登録
                   onPressed: () {
-                    DateTime startDate = Constant.formatter.parseStrict(ref
+                    DateTime startDate = Constant.slashSeparateFormat.parseStrict(ref
                         .read(AppProvider.startDateControllerStateProvider)
                         .text);
-                    DateTime endDate = Constant.formatter.parseStrict(ref
+                    DateTime endDate = Constant.slashSeparateFormat.parseStrict(ref
                         .read(AppProvider.endDateControllerStateProvider)
                         .text);
                     ref
