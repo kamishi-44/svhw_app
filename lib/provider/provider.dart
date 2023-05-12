@@ -27,7 +27,7 @@ class AppProvider {
   static final startDateControllerStateProvider =
   StateProvider.autoDispose((ref) {
     return TextEditingController(
-        text: Constant.formatter.format(DateTime.now()));
+        text: Constant.slashSeparateFormat.format(DateTime.now()));
   });
 
   /// 夏休みの期間登録画面の入力フィールド
@@ -35,7 +35,7 @@ class AppProvider {
   static final endDateControllerStateProvider =
   StateProvider.autoDispose((ref) {
     return TextEditingController(
-        text: Constant.formatter.format(DateTime(
+        text: Constant.slashSeparateFormat.format(DateTime(
             DateTime
                 .now()
                 .year, DateTime.august, Constant.thirtyOneDays)));
