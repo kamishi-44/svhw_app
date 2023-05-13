@@ -21,7 +21,7 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('宿題の進捗確認画面'),
+        title: const Text(Constant.homePageTitle),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

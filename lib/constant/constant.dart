@@ -25,6 +25,18 @@ class Constant {
   /// 期間登録画面の横の余白
   static const double vacationPeriodPageVerticalPadding = 50;
 
+  /// ページタイトル：夏休みの期間登録画面
+  static const String vacationPeriodPageTitle = '夏休みの期間を登録';
+
+  /// ページタイトル：夏休みの宿題登録画面
+  static const String registerHomeworkPageTitle = '宿題の内容を登録';
+
+  /// ページタイトル：宿題の進捗確認画面
+  static const String homePageTitle = 'ホーム';
+
+  /// ページタイトル：宿題の進捗確認画面
+  static const String registerProgressPageTitle = '今日やったこと';
+
   /// メッセージ：夏休みの始まり
   static const String vacationStartDateMessage = '夏休みのはじまり';
 

@@ -21,7 +21,7 @@ class RegisterHomeworkPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('夏休みの宿題登録画面'),
+        title: const Text(Constant.registerHomeworkPageTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
