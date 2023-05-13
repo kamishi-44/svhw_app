@@ -15,7 +15,7 @@ class VacationPeriodPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('夏休みの期間登録画面'),
+        title: const Text(Constant.vacationPeriodPageTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
