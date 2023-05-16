@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:svhw_app/constant/constant.dart';
@@ -46,7 +47,9 @@ class RegisterHomeworkPage extends ConsumerWidget {
                           children: [
                             SlidableAction(
                               onPressed: (context) {
-                                ref.read(AppProvider.homeworksProvider.notifier)
+                                ref
+                                    .read(
+                                        AppProvider.homeworksProvider.notifier)
                                     .removeHomeWork(homework.id);
                               },
                               flex: 2,
@@ -81,8 +84,7 @@ class RegisterHomeworkPage extends ConsumerWidget {
                         .read(AppProvider.homeworksProvider.notifier)
                         .insertHomeworks();
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                        const HomePage()));
+                        builder: (BuildContext context) => const HomePage()));
                   },
                   child: const Text(Constant.registerMessage)),
             ),
@@ -105,11 +107,30 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
         builder: (BuildContext context) => AlertDialog(
           title: const Text(Constant.selectHomeworkMessage),
           content: SizedBox(
-            height: 100,
+            height: 150,
             child: Column(
-              children: const [
-                SubjectDropdownButton(),
-                HomeworkTypeDropdownButton(),
+              children: [
+                const SubjectDropdownButton(),
+                const HomeworkTypeDropdownButton(),
+                Container(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                          width: 55,
+                          height: 30,
+                          child: TextField(
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                          )),
+                      Text(_getHomeworkUnits(ref)),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -140,5 +161,17 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
         style: TextStyle(fontSize: 20),
       ),
     );
+  }
+
+  /// 宿題の種類にあった単位を取得します。
+  String _getHomeworkUnits(WidgetRef ref) {
+    final HomeworkType selectType = ref.watch(AppProvider.selectTypeProvider);
+
+    switch (selectType) {
+      case HomeworkType.print:
+        return '枚';
+      case HomeworkType.text:
+        return 'P';
+    }
   }
 }
