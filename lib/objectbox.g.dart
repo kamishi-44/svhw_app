@@ -17,7 +17,6 @@ import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 import 'model/homework.dart';
 import 'model/progress.dart';
 import 'model/vacation_period.dart';
-import 'model/weather.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -201,7 +200,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.addInt64(0, object.id);
           fbb.addInt64(1, object.homeworkId);
           fbb.addInt64(2, object.total);
-          fbb.addInt64(3, object.done);
+          fbb.addInt64(3, object.completed);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -214,37 +213,8 @@ ModelDefinition getObjectBoxModel() {
               homeworkId:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0),
               total: const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0),
-              done:
+              completed:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
-
-          return object;
-        }),
-    Weather: EntityDefinition<Weather>(
-        model: _entities[2],
-        toOneRelations: (Weather object) => [],
-        toManyRelations: (Weather object) => {},
-        getId: (Weather object) => object.id,
-        setId: (Weather object, int id) {
-          object.id = id;
-        },
-        objectToFB: (Weather object, fb.Builder fbb) {
-          fbb.startTable(4);
-          fbb.addInt64(0, object.id);
-          fbb.addInt64(1, object.weatherType);
-          fbb.addInt64(2, object.date.millisecondsSinceEpoch);
-          fbb.finish(fbb.endTable());
-          return object.id;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = Weather(
-              id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
-              weatherType:
-                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0),
-              date: DateTime.fromMillisecondsSinceEpoch(
-                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0)));
 
           return object;
         }),
@@ -312,19 +282,6 @@ class Progress_ {
   /// see [Progress.done]
   static final done =
       QueryIntegerProperty<Progress>(_entities[1].properties[3]);
-}
-
-/// [Weather] entity fields to define ObjectBox queries.
-class Weather_ {
-  /// see [Weather.id]
-  static final id = QueryIntegerProperty<Weather>(_entities[2].properties[0]);
-
-  /// see [Weather.weatherType]
-  static final weatherType =
-      QueryIntegerProperty<Weather>(_entities[2].properties[1]);
-
-  /// see [Weather.date]
-  static final date = QueryIntegerProperty<Weather>(_entities[2].properties[2]);
 }
 
 /// [VacationPeriod] entity fields to define ObjectBox queries.
