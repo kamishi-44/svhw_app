@@ -14,11 +14,11 @@ class Progress {
   int total;
 
   /// 現在完了した数
-  int done;
+  int completed;
 
   Progress(
       {this.id = 0,
       required this.homeworkId,
       required this.total,
-      required this.done});
+      required this.completed});
 }
