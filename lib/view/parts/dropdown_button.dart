@@ -22,8 +22,7 @@ class SubjectDropdownButton extends ConsumerWidget {
             value: subject,
             child: Text(subject),
           );
-        }).toList()
-    );
+        }).toList());
   }
 }
 

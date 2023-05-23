@@ -109,27 +109,26 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
           content: SizedBox(
             height: 150,
             child: Column(
+
               children: [
                 const SubjectDropdownButton(),
                 const HomeworkTypeDropdownButton(),
-                Container(
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                          width: 55,
-                          height: 30,
-                          child: TextField(
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder()),
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                          )),
-                      Text(_getHomeworkUnits(ref)),
-                    ],
-                  ),
+                Row(
+                   mainAxisAlignment:  MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        width: 55,
+                        height: 30,
+                        child: TextField(
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder()),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        )),
+                    const Text(Constant.unitsMessage),
+                  ],
                 )
               ],
             ),
