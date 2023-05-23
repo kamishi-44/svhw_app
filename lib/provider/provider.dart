@@ -50,6 +50,7 @@ class AppProvider {
   static final selectSubjectProvider =
   StateProvider.autoDispose((ref) => Constant.dropDownItems[0]);
 
+  /// 宿題の種類を管理するプロバイダーです。
   static final selectTypeProvider =
   StateProvider.autoDispose((ref) => HomeworkType.text);
 

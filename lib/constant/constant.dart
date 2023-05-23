@@ -67,6 +67,9 @@ class Constant {
   /// メッセージ：ホーム
   static const String homeMessage = 'ホーム';
 
+  /// メッセージ：P/枚
+  static const String unitsMessage = 'P/枚';
+
   /// 日付(yyyy/MM/dd)のフォーマット
   static final DateFormat slashSeparateFormat = DateFormat('yyyy/MM/dd', 'ja-JP');
 
