@@ -2,16 +2,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../main.dart';
 import '../../model/homework.dart';
+import '../../objectbox.g.dart';
 
 /// 登録予定の宿題の StateNotifier です。
 class HomeworkNotifier extends StateNotifier<List<Homework>> {
   HomeworkNotifier(): super([]);
 
   /// 宿題のBox
-  final homeworkBox = store.box<Homework>();
+  final Box<Homework> homeworkBox = store.box<Homework>();
 
   /// 宿題を追加します。
-  /// DBへの登録は行わないません。
+  /// DBへの登録は行ないません。
   /// DBへ登録する場合はinsertHomeworks()を呼び出してください。
   void addHomeWork(Homework homework) {
     state = [...state, homework];

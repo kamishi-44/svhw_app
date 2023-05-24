@@ -13,6 +13,7 @@ class Homework {
   /// 宿題の種別(テキスト or プリント)
   int homeworkType;
 
+  /// コンストラクタ
   Homework({this.id = 0, required this.subject, required this.homeworkType});
 }
 
