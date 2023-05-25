@@ -8,6 +8,7 @@ import 'package:svhw_app/view/page_util.dart';
 import 'package:svhw_app/view/parts/dropdown_button.dart';
 
 import '../model/homework.dart';
+import '../model/progress.dart';
 import 'home_page.dart';
 
 /// 夏休みの宿題を登録する画面です。
@@ -83,6 +84,9 @@ class RegisterHomeworkPage extends ConsumerWidget {
                     ref
                         .read(AppProvider.homeworksProvider.notifier)
                         .insertHomeworks();
+                    ref
+                        .read(AppProvider.progressProvider.notifier)
+                        .insertProgress();
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) => const HomePage()));
                   },
@@ -109,17 +113,18 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
           content: SizedBox(
             height: 150,
             child: Column(
-
               children: [
                 const SubjectDropdownButton(),
                 const HomeworkTypeDropdownButton(),
                 Row(
-                   mainAxisAlignment:  MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                         width: 55,
                         height: 30,
                         child: TextField(
+                          controller: ref.watch(AppProvider
+                              .amountHomeworkControllerStateProvider),
                           decoration: const InputDecoration(
                               border: OutlineInputBorder()),
                           keyboardType: TextInputType.number,
@@ -144,10 +149,19 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
                     ref.read(AppProvider.selectSubjectProvider);
                 final HomeworkType selectType =
                     ref.read(AppProvider.selectTypeProvider);
-                ref.read(AppProvider.homeworksProvider.notifier).addHomeWork(
-                    Homework(
-                        subject: selectSubject,
-                        homeworkType: selectType.typeInt));
+                final Homework homework = Homework(
+                    subject: selectSubject, homeworkType: selectType.typeInt);
+                ref
+                    .read(AppProvider.homeworksProvider.notifier)
+                    .addHomeWork(homework);
+                ref.read(AppProvider.progressProvider.notifier).addProgress(
+                    Progress(
+                        homeworkId: homework.id,
+                        total: ref
+                            .read(AppProvider
+                                .amountHomeworkControllerStateProvider)
+                            .intValue(),
+                        completed: 0));
                 Navigator.pop(context, Constant.addMessage);
               },
               child: const Text(Constant.addMessage),
@@ -161,16 +175,12 @@ class _SelectHomeworkDialogButton extends ConsumerWidget {
       ),
     );
   }
+}
 
-  /// 宿題の種類にあった単位を取得します。
-  String _getHomeworkUnits(WidgetRef ref) {
-    final HomeworkType selectType = ref.watch(AppProvider.selectTypeProvider);
-
-    switch (selectType) {
-      case HomeworkType.print:
-        return '枚';
-      case HomeworkType.text:
-        return 'P';
-    }
+/// TextEditingController の拡張機能です。
+extension TextEditingControllerExt on TextEditingController {
+  /// 入力値をint型で返します。
+  int intValue() {
+    return int.parse(text);
   }
 }
