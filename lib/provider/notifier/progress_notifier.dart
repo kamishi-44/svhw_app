@@ -12,7 +12,7 @@ class ProgressNotifier extends StateNotifier<List<Progress>> {
 
   /// 宿題の量を追加します。
   /// DBへの登録は行いません。
-  void addHomeWork(Progress progress) {
+  void addProgress(Progress progress) {
     state = [...state, progress];
   }
 
@@ -26,7 +26,7 @@ class ProgressNotifier extends StateNotifier<List<Progress>> {
 
   /// ProgressNotifier で管理している宿題の量を登録します。
   /// 夏休みの宿題登録画面で選択された宿題の量です。
-  void insertHomeworks() {
+  void insertProgress() {
     for (var progress in state) {
       progressBox.put(progress);
     }

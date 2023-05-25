@@ -53,6 +53,13 @@ class AppProvider {
       StateNotifierProvider<ProgressNotifier, List<Progress>>(
           (ref) => ProgressNotifier());
 
+  /// 夏休みの期間登録画面の入力フィールド
+  /// 夏休みの開始日のプロバイダーです。
+  static final amountHomeworkControllerStateProvider =
+      StateProvider.autoDispose((ref) {
+    return TextEditingController(text: '');
+  });
+
   /// 科目選択プルダウンの選択値を管理するプロバイダーです。
   static final selectSubjectProvider =
       StateProvider.autoDispose((ref) => Constant.dropDownItems[0]);
